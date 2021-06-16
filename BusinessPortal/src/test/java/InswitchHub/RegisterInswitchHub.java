@@ -1,37 +1,48 @@
 package InswitchHub;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
 public class RegisterInswitchHub {
 
-    WebDriver chromeDriver;
-    @Before
-    public void openDriver() {
+    private WebDriver driver;
 
-        System.setProperty("webdriver.chrome.driver", "src\\main\\resources\\chromedriver.exe");
-        ChromeOptions options = new ChromeOptions();
-        options.setCapability("marionette", false);
-        chromeDriver = new ChromeDriver(options);
-        chromeDriver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-        chromeDriver.manage().window().maximize();
+    @BeforeClass
+        public static void setupClass() {
+        WebDriverManager.chromedriver().setup();
+
     }
 
+    @Before
+    public void setupTest() {
+        driver = new ChromeDriver();
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().window().maximize();
+    }
 
-    @Test
-    public void register(){
-        chromeDriver.get("https://dashboard-ish.apps.ins.inswhub.com/login");
+    @After
+    public void teardown() {
+        if (driver != null) {
+            driver.quit();
+        }
+    }
+
+     @Test
+     public void register(){
+         driver.get("https://dashboard-ish.apps.ins.inswhub.com/login");
         //Acertamos si la opción de registrar está habilitada
-        WebElement opcionRegistro = chromeDriver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/div/div/div[2]/div/p/a/u"));
+        WebElement opcionRegistro = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/div/div/div[2]/div/p/a/u"));
         //Assert.assertTrue(opcionRegistro.isDisplayed());
 
         if (opcionRegistro.isDisplayed()) {
@@ -39,7 +50,7 @@ public class RegisterInswitchHub {
             opcionRegistro.click();
         }
 
-        WebElement ingresoNombre = chromeDriver.findElement(By.name("firstName"));
+        WebElement ingresoNombre = driver.findElement(By.name("firstName"));
 
         if (ingresoNombre.isDisplayed()) {
             ingresoNombre.click();
@@ -49,7 +60,7 @@ public class RegisterInswitchHub {
 
         }
 
-        WebElement ingresoApellido = chromeDriver.findElement(By.name("lastName"));
+        WebElement ingresoApellido = driver.findElement(By.name("lastName"));
         if (ingresoApellido.isDisplayed()) {
             ingresoApellido.click();
             ingresoApellido.clear();
@@ -58,7 +69,7 @@ public class RegisterInswitchHub {
 
         }
 
-        WebElement ingresoEmail = chromeDriver.findElement(By.name("email"));
+        WebElement ingresoEmail = driver.findElement(By.name("email"));
         if (ingresoEmail.isDisplayed()) {
             ingresoEmail.click();
             ingresoEmail.clear();
@@ -67,7 +78,7 @@ public class RegisterInswitchHub {
 
         }
 
-        WebElement ingresoNombreUsuario = chromeDriver.findElement(By.name("username"));
+        WebElement ingresoNombreUsuario = driver.findElement(By.name("username"));
         if (ingresoNombreUsuario.isDisplayed()) {
             ingresoNombreUsuario.click();
             ingresoNombreUsuario.clear();
@@ -76,7 +87,7 @@ public class RegisterInswitchHub {
 
         }
 
-        WebElement ingresoPassword = chromeDriver.findElement(By.name("password"));
+        WebElement ingresoPassword = driver.findElement(By.name("password"));
         if (ingresoPassword.isDisplayed()) {
             ingresoPassword.click();
             ingresoPassword.clear();
@@ -85,7 +96,7 @@ public class RegisterInswitchHub {
 
         }
 
-        WebElement ingresoConfirmacionPassword = chromeDriver.findElement(By.name("rePassword"));
+        WebElement ingresoConfirmacionPassword = driver.findElement(By.name("rePassword"));
         if (ingresoConfirmacionPassword.isDisplayed()) {
             ingresoConfirmacionPassword.click();
             ingresoConfirmacionPassword.clear();
@@ -94,7 +105,7 @@ public class RegisterInswitchHub {
 
         }
 
-        WebElement ingresoNombreCompañia = chromeDriver.findElement(By.name("companyName"));
+        WebElement ingresoNombreCompañia = driver.findElement(By.name("companyName"));
         if (ingresoNombreCompañia.isDisplayed()) {
             ingresoNombreCompañia.click();
             ingresoNombreCompañia.clear();
@@ -103,7 +114,7 @@ public class RegisterInswitchHub {
 
         }
 
-        WebElement ingresoWebSite = chromeDriver.findElement(By.name("website"));
+        WebElement ingresoWebSite = driver.findElement(By.name("website"));
         if (ingresoWebSite.isDisplayed()) {
             ingresoWebSite.click();
             ingresoWebSite.clear();
@@ -112,7 +123,7 @@ public class RegisterInswitchHub {
 
         }
 
-        WebElement terminosyCondiciones = chromeDriver.findElement(By.name("acceptTerms"));
+        WebElement terminosyCondiciones = driver.findElement(By.name("acceptTerms"));
         if (terminosyCondiciones.isDisplayed()) {
             terminosyCondiciones.click();
             System.out.println("Campo de Terminos y condiciones --> Existe.");
@@ -120,23 +131,15 @@ public class RegisterInswitchHub {
 
         }
 
-        WebElement crearCuenta = chromeDriver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/div/div/div[2]/div/form/div[8]/button"));
+        WebElement crearCuenta = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/div/div/div[2]/div/form/div[8]/button"));
         if (crearCuenta.isSelected()) {
             crearCuenta.click();
             System.out.println("Campo de Terminos y condiciones --> Existe.");
-            chromeDriver.findElement(By.name("Close")).click();
+            driver.findElement(By.name("Close")).click();
             System.out.println("Registro Exitoso.");
 
         }
 
     }
-
-    @After
-    public void closeDriver(){
-
-        chromeDriver.quit();
-    }
-
-
 
 }
