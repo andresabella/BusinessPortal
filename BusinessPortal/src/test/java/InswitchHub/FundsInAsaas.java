@@ -10,8 +10,6 @@ import java.util.concurrent.TimeUnit;
 
 public class FundsInAsaas extends BaseTest {
 
-
-
     @Test
     public void fundsInAsaas() throws IOException, InterruptedException {
 
@@ -84,14 +82,14 @@ public class FundsInAsaas extends BaseTest {
             System.out.println("No se muestra la opción de Balance");
         }
 
-        String asaasAcountName = driver.findElement(By.linkText("Account BRL Sandbox")).getText();
+        String asaasAcountName = driver.findElement(By.xpath("//h5[contains(text(),'Account BRL Sandbox')]")).getText();
         System.out.println("Nombre de la cuenta: " + asaasAcountName );
-        String assasAcountSaldo = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[13]/div/div[1]/div/div/div[2]/h3")).getText();
+        String assasAcountSaldo = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[6]/div/div[1]/div/div/div[2]/h3")).getText();
         System.out.println("Saldo de la cuenta: " + assasAcountSaldo );
 
 
         Actions action0 = new Actions(driver);
-        WebElement clickFundsIn = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[13]/div/div[1]/div/div/div[4]/div/div[1]/div/button/i"));
+        WebElement clickFundsIn = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[6]/div/div[1]/div/div/div[4]/div/div[1]/div/button/i"));
         action0.moveToElement(clickFundsIn);
         if (clickFundsIn.isDisplayed()) {
             clickFundsIn.click();
@@ -112,6 +110,10 @@ public class FundsInAsaas extends BaseTest {
         } else {
             System.out.println("No se encontró la opción de Cash");
         }
+        Thread.sleep(3000);
+
+        String paymentMethodSelected = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[2]/div/table/tbody/tr/td[3]")).getText();
+        System.out.println("El método de pago seleccionado es: " + paymentMethodSelected );
 
         WebElement paymentMethodType = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[2]/div/table/tbody/tr/td[6]/button"));
         if (paymentMethodType.isDisplayed()) {
@@ -126,8 +128,6 @@ public class FundsInAsaas extends BaseTest {
 
         //Funds In Transaction
 
-        String paymentMethodSelected = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/p/small/strong")).getText();
-        System.out.println("El método de pago seleccionado es: " + paymentMethodSelected );
 
         WebElement fundsInDescription = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[1]/input"));
         if (fundsInDescription.isDisplayed()) {
@@ -162,7 +162,7 @@ public class FundsInAsaas extends BaseTest {
             System.out.println("No se ingresó CPF-CNPJ para de la transacción");
         }
 
-        WebElement fundsInName = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[3]/input"));
+        WebElement fundsInName = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[4]/input"));
         if (fundsInName.isDisplayed()) {
             fundsInName.clear();
             fundsInName.click();
@@ -184,19 +184,35 @@ public class FundsInAsaas extends BaseTest {
             System.out.println("No se creó la transacción");
         }
 
-        WebElement fundsInConfirm = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]"));
-        if (fundsInConfirm.isDisplayed()) {
-            System.out.println("Se confirma exitosamente la transacción");
-            File screenshotFile6 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(screenshotFile6, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInAsaas\\fundsInConfirm.png"));
+        Thread.sleep(4000);
+        File screenshotFile6 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshotFile6, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInAsaas\\fundsInCreate.png"));
 
+
+        WebElement goToTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/aside/div[4]/div/ul/div[5]/li/a/div/span"));
+        if (goToTransactions.isDisplayed()) {
+            goToTransactions.click();
+            System.out.println("Ingresó a la opción Transactions");
 
         } else {
-            System.out.println("No se creó la transacción");
+            System.out.println("No ingresó a la opción Transactions");
+
         }
 
-        String fundsInConfirmMessage = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]")).getText();
-        System.out.println("El mensaje de confirmación transaccional es: " + fundsInConfirmMessage );
+        WebElement viewTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[1]/div/div/div[4]/button"));
+        if (viewTransactions.isDisplayed()) {
+            viewTransactions.click();
+            File screenshotFile7 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshotFile7, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInAsaas\\viewTransactions.png"));
+            System.out.println("Ingresó a la opción Transactions");
+
+        } else {
+            System.out.println("No ingresó a la opción Transactions");
+
+        }
+
+        String lastTransaction = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[2]/div/div/div[2]/table/tbody/tr[1]")).getText();
+        System.out.println("Confirmación datos última transacción enviada: " + lastTransaction );
 
     }
 }

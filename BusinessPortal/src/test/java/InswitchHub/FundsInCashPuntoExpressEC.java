@@ -114,7 +114,79 @@ public class FundsInCashPuntoExpressEC extends BaseTest {
 
         }
 
+        WebElement selectPaymentMethod = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[2]/div/table/tbody/tr/td[6]/button"));
+        if (selectPaymentMethod.isDisplayed()) {
+            selectPaymentMethod.click();
+            File screenshotFile5 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshotFile5, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInCashPuntoExpressEC\\selectPaymentMethod.png"));
+            System.out.println("Selección de payment method correcto");
 
+        } else {
+            System.out.println("No se encontró el payment method");
+
+        }
+
+        WebElement enterDescription = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[1]/input"));
+        if (enterDescription.isDisplayed()) {
+            enterDescription.clear();
+            enterDescription.sendKeys("FundsIn Test Cash");
+            File screenshotFile6 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshotFile6, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInCashPuntoExpressEC\\enterDescription.png"));
+            System.out.println("Se ingreso la descripción del pago");
+
+        } else {
+            System.out.println("No se ingresó la descripción");
+
+        }
+
+        WebElement enterAmount = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[2]/input"));
+        if (enterAmount.isDisplayed()) {
+            enterAmount.clear();
+            enterAmount.sendKeys("112");
+            System.out.println("Se ingreso la cantidad del pago");
+
+        } else {
+            System.out.println("No se ingresó la cantidad");
+
+        }
+
+        WebElement createTransaction = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[3]/div/button[2]"));
+        if (createTransaction.isDisplayed()) {
+            createTransaction.click();
+            System.out.println("Transacción creada");
+
+        } else {
+            System.out.println("Transacción no creada");
+
+        }
+        Thread.sleep(4000);
+        File screenshotFile7 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshotFile7, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInCashPuntoExpressEC\\createTransaction.png"));
+
+        WebElement goToTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/aside/div[4]/div/ul/div[5]/li/a/div/span"));
+        if (goToTransactions.isDisplayed()) {
+            goToTransactions.click();
+            System.out.println("Ingresó a la opción Transactions");
+
+        } else {
+            System.out.println("No ingresó a la opción Transactions");
+
+        }
+
+        WebElement viewTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[1]/div/div/div[4]/button"));
+        if (viewTransactions.isDisplayed()) {
+            viewTransactions.click();
+            File screenshotFile8 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshotFile8, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInCashPuntoExpressEC\\viewTransactions.png"));
+            System.out.println("Ingresó a la opción Transactions");
+
+        } else {
+            System.out.println("No ingresó a la opción Transactions");
+
+        }
+
+        String lastTransaction = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[2]/div/div/div[2]/table/tbody/tr[1]")).getText();
+        System.out.println("Confirmación datos última transacción enviada: " + lastTransaction );
 
 
     }
