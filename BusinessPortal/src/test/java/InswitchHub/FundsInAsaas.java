@@ -18,7 +18,7 @@ public class FundsInAsaas extends BaseTest {
 
 
         WebElement userName = driver.findElement(By.name("email"));
-        if (userName.isDisplayed()) {
+        if (userName.isDisplayed()==true) {
             userName.clear();
             userName.sendKeys("andres.abella");
         } else {
@@ -27,7 +27,7 @@ public class FundsInAsaas extends BaseTest {
         }
 
         WebElement password = driver.findElement(By.name("password"));
-        if (password.isDisplayed()) {
+        if (password.isDisplayed()==true) {
             password.clear();
             password.sendKeys("inswitch");
             //Tomar Screenshot
@@ -39,7 +39,7 @@ public class FundsInAsaas extends BaseTest {
         }
 
         WebElement signIn = driver.findElement(By.xpath("//button[contains(text(),'Login')]"));
-        if (signIn.isDisplayed()) {
+        if (signIn.isDisplayed()==true) {
             signIn.click();
         } else {
             System.out.println("No se pudo hacer Login correctamente");
@@ -74,7 +74,7 @@ public class FundsInAsaas extends BaseTest {
         }
 
         WebElement balanceOption = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/aside/div[4]/div/ul/div[3]/li/div/a[2]/span"));
-        if (balanceOption.isEnabled()) {
+        if (balanceOption.isEnabled()== true) {
             balanceOption.click();
             System.out.println("Se muestra la opción de Balance correctamente");
 
@@ -91,7 +91,7 @@ public class FundsInAsaas extends BaseTest {
         Actions action0 = new Actions(driver);
         WebElement clickFundsIn = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[6]/div/div[1]/div/div/div[4]/div/div[1]/div/button/i"));
         action0.moveToElement(clickFundsIn);
-        if (clickFundsIn.isDisplayed()) {
+        if (clickFundsIn.isDisplayed()==true) {
             clickFundsIn.click();
             System.out.println("Ingreso correcto a Funds In");
 
@@ -101,7 +101,7 @@ public class FundsInAsaas extends BaseTest {
         }
 
         WebElement clickFundsInCash = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div[4]/button"));
-        if (clickFundsInCash.isDisplayed()) {
+        if (clickFundsInCash.isDisplayed()==true) {
             clickFundsInCash.click();
             File screenshotFile3 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile3, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInAsaas\\clickFundsInCash.png"));
@@ -116,7 +116,7 @@ public class FundsInAsaas extends BaseTest {
         System.out.println("El método de pago seleccionado es: " + paymentMethodSelected );
 
         WebElement paymentMethodType = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[2]/div/table/tbody/tr/td[6]/button"));
-        if (paymentMethodType.isDisplayed()) {
+        if (paymentMethodType.isDisplayed()==true) {
             paymentMethodType.click();
             File screenshotFile4 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile4, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInAsaas\\paymentMethodType.png"));
@@ -130,7 +130,7 @@ public class FundsInAsaas extends BaseTest {
 
 
         WebElement fundsInDescription = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[1]/input"));
-        if (fundsInDescription.isDisplayed()) {
+        if (fundsInDescription.isDisplayed()==true) {
             fundsInDescription.clear();
             fundsInDescription.click();
             fundsInDescription.sendKeys("Funds In test");
@@ -141,7 +141,7 @@ public class FundsInAsaas extends BaseTest {
         }
 
         WebElement fundsInAmount = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[2]/input"));
-        if (fundsInAmount.isDisplayed()) {
+        if (fundsInAmount.isDisplayed()==true) {
             fundsInAmount.clear();
             fundsInAmount.click();
             fundsInAmount.sendKeys("121");
@@ -152,7 +152,7 @@ public class FundsInAsaas extends BaseTest {
         }
 
         WebElement fundsInIdentification = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[3]/input"));
-        if (fundsInIdentification.isDisplayed()) {
+        if (fundsInIdentification.isDisplayed()==true) {
             fundsInIdentification.clear();
             fundsInIdentification.click();
             fundsInIdentification.sendKeys("54.651.716/0011-50");
@@ -163,7 +163,7 @@ public class FundsInAsaas extends BaseTest {
         }
 
         WebElement fundsInName = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[4]/input"));
-        if (fundsInName.isDisplayed()) {
+        if (fundsInName.isDisplayed()==true) {
             fundsInName.clear();
             fundsInName.click();
             fundsInName.sendKeys("Andres Abella");
@@ -176,7 +176,7 @@ public class FundsInAsaas extends BaseTest {
         }
 
         WebElement fundsInCreate = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[5]/div/button[2]"));
-        if (fundsInCreate.isDisplayed()) {
+        if (fundsInCreate.isDisplayed()==true) {
             fundsInCreate.click();
             System.out.println("Se crea la transacción");
 
@@ -190,7 +190,7 @@ public class FundsInAsaas extends BaseTest {
 
 
         WebElement goToTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/aside/div[4]/div/ul/div[5]/li/a/div/span"));
-        if (goToTransactions.isDisplayed()) {
+        if (goToTransactions.isDisplayed()==true) {
             goToTransactions.click();
             System.out.println("Ingresó a la opción Transactions");
 
@@ -200,7 +200,7 @@ public class FundsInAsaas extends BaseTest {
         }
 
         WebElement viewTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[1]/div/div/div[4]/button"));
-        if (viewTransactions.isDisplayed()) {
+        if (viewTransactions.isDisplayed()==true) {
             viewTransactions.click();
             File screenshotFile7 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile7, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInAsaas\\viewTransactions.png"));

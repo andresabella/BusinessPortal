@@ -43,16 +43,16 @@ public class RegisterInswitchHub {
          driver.get("https://dashboard-ish.apps.ins.inswhub.com/login");
         //Acertamos si la opción de registrar está habilitada
         WebElement opcionRegistro = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/div/div/div[2]/div/p/a/u"));
-        //Assert.assertTrue(opcionRegistro.isDisplayed());
+        //Assert.assertTrue(opcionRegistro.isDisplayed()==true);
 
-        if (opcionRegistro.isDisplayed()) {
+        if (opcionRegistro.isDisplayed()==true) {
             System.out.println("La opción de registro --> Existe.");
             opcionRegistro.click();
         }
 
         WebElement ingresoNombre = driver.findElement(By.name("firstName"));
 
-        if (ingresoNombre.isDisplayed()) {
+        if (ingresoNombre.isDisplayed()==true) {
             ingresoNombre.click();
             ingresoNombre.clear();
             ingresoNombre.sendKeys("Andresss");
@@ -61,7 +61,7 @@ public class RegisterInswitchHub {
         }
 
         WebElement ingresoApellido = driver.findElement(By.name("lastName"));
-        if (ingresoApellido.isDisplayed()) {
+        if (ingresoApellido.isDisplayed()==true) {
             ingresoApellido.click();
             ingresoApellido.clear();
             ingresoApellido.sendKeys("Abellaaa");
@@ -70,7 +70,7 @@ public class RegisterInswitchHub {
         }
 
         WebElement ingresoEmail = driver.findElement(By.name("email"));
-        if (ingresoEmail.isDisplayed()) {
+        if (ingresoEmail.isDisplayed()==true) {
             ingresoEmail.click();
             ingresoEmail.clear();
             ingresoEmail.sendKeys("test@inswitch.com");
@@ -79,7 +79,7 @@ public class RegisterInswitchHub {
         }
 
         WebElement ingresoNombreUsuario = driver.findElement(By.name("username"));
-        if (ingresoNombreUsuario.isDisplayed()) {
+        if (ingresoNombreUsuario.isDisplayed()==true) {
             ingresoNombreUsuario.click();
             ingresoNombreUsuario.clear();
             ingresoNombreUsuario.sendKeys("newuser6");
@@ -88,7 +88,7 @@ public class RegisterInswitchHub {
         }
 
         WebElement ingresoPassword = driver.findElement(By.name("password"));
-        if (ingresoPassword.isDisplayed()) {
+        if (ingresoPassword.isDisplayed()==true) {
             ingresoPassword.click();
             ingresoPassword.clear();
             ingresoPassword.sendKeys("P1234");
@@ -97,7 +97,7 @@ public class RegisterInswitchHub {
         }
 
         WebElement ingresoConfirmacionPassword = driver.findElement(By.name("rePassword"));
-        if (ingresoConfirmacionPassword.isDisplayed()) {
+        if (ingresoConfirmacionPassword.isDisplayed()==true) {
             ingresoConfirmacionPassword.click();
             ingresoConfirmacionPassword.clear();
             ingresoConfirmacionPassword.sendKeys("P1234");
@@ -106,7 +106,7 @@ public class RegisterInswitchHub {
         }
 
         WebElement ingresoNombreCompañia = driver.findElement(By.name("companyName"));
-        if (ingresoNombreCompañia.isDisplayed()) {
+        if (ingresoNombreCompañia.isDisplayed()==true) {
             ingresoNombreCompañia.click();
             ingresoNombreCompañia.clear();
             ingresoNombreCompañia.sendKeys("name 1 test");
@@ -115,7 +115,7 @@ public class RegisterInswitchHub {
         }
 
         WebElement ingresoWebSite = driver.findElement(By.name("website"));
-        if (ingresoWebSite.isDisplayed()) {
+        if (ingresoWebSite.isDisplayed()==true) {
             ingresoWebSite.click();
             ingresoWebSite.clear();
             ingresoWebSite.sendKeys("any1@io.com");
@@ -124,7 +124,7 @@ public class RegisterInswitchHub {
         }
 
         WebElement terminosyCondiciones = driver.findElement(By.name("acceptTerms"));
-        if (terminosyCondiciones.isDisplayed()) {
+        if (terminosyCondiciones.isDisplayed()==true) {
             terminosyCondiciones.click();
             System.out.println("Campo de Terminos y condiciones --> Existe.");
 
@@ -132,7 +132,7 @@ public class RegisterInswitchHub {
         }
 
         WebElement crearCuenta = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/div/div/div[2]/div/form/div[8]/button"));
-        if (crearCuenta.isSelected()) {
+        if (crearCuenta.isSelected()==true) {
             crearCuenta.click();
             System.out.println("Campo de Terminos y condiciones --> Existe.");
             driver.findElement(By.name("Close")).click();

@@ -18,7 +18,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         WebElement userName = driver.findElement(By.name("email"));
-        if (userName.isDisplayed()) {
+        if (userName.isDisplayed()==true) {
             userName.clear();
             userName.sendKeys("andres.abella");
         } else {
@@ -27,7 +27,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         }
 
         WebElement password = driver.findElement(By.name("password"));
-        if (password.isDisplayed()) {
+        if (password.isDisplayed()==true) {
             password.clear();
             password.sendKeys("inswitch");
             //Tomar Screenshot
@@ -39,7 +39,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         }
 
         WebElement signIn = driver.findElement(By.xpath("//button[contains(text(),'Login')]"));
-        if (signIn.isDisplayed()) {
+        if (signIn.isDisplayed()==true) {
             signIn.click();
         } else {
             System.out.println("No se pudo hacer Login correctamente");
@@ -51,7 +51,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         //Ambiente Producción
         //WebElement sandBoxEnvironment = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/ul/li[2]"));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        if (sandBoxEnvironment.isEnabled()) {
+        if (sandBoxEnvironment.isEnabled()==true) {
             //driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/ul")).click();
             sandBoxEnvironment.click();
             File screenshotFile1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -63,7 +63,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         }
 
         WebElement walletOption = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/aside/div[4]/div/ul/div[3]/li/a/div/span"));
-        if (walletOption.isEnabled()) {
+        if (walletOption.isEnabled()==true) {
             walletOption.click();
             File screenshotFile2 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile2, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInCashPagoExpress\\walletOption.png"));
@@ -74,7 +74,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         }
 
         WebElement balanceOption = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/aside/div[4]/div/ul/div[3]/li/div/a[2]/span"));
-        if (balanceOption.isEnabled()) {
+        if (balanceOption.isEnabled()==true) {
             balanceOption.click();
             System.out.println("Se muestra la opción de Balance correctamente");
 
@@ -92,7 +92,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         Actions action0 = new Actions(driver);
         WebElement fundsInButton = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[9]/div/div[1]/div/div/div[4]/div/div[1]/div/button/i"));
         action0.moveToElement(fundsInButton);
-        if (fundsInButton.isDisplayed()) {
+        if (fundsInButton.isDisplayed()==true) {
             fundsInButton.click();
             File screenshotFile2 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile2, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInCashPagoExpress\\fundsInButton.png"));
@@ -104,7 +104,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         }
 
         WebElement paymentMethodCash = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div[4]/button"));
-        if (paymentMethodCash.isDisplayed()) {
+        if (paymentMethodCash.isDisplayed()==true) {
             paymentMethodCash.click();
             File screenshotFile3 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile3, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInCashPagoExpress\\paymentMethodOptionCash.png"));
@@ -121,7 +121,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         System.out.println("El método de pago seleccionado es: " + paymentMethodSelected );
 
         WebElement selectPaymentMethodType = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[2]/div/table/tbody/tr/td[6]/button"));
-        if (selectPaymentMethodType.isDisplayed()) {
+        if (selectPaymentMethodType.isDisplayed()==true) {
             selectPaymentMethodType.click();
             System.out.println("Payment Method seleccionado correctamente");
 
@@ -131,7 +131,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         }
 
         WebElement fundsInDescription = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[1]/input"));
-        if (fundsInDescription.isDisplayed()) {
+        if (fundsInDescription.isDisplayed()==true) {
             fundsInDescription.clear();
             fundsInDescription.sendKeys("Funds In Test");
             System.out.println("Se ingresó la descripción correctamente");
@@ -142,7 +142,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         }
 
         WebElement fundsInAmount = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[2]/input"));
-        if (fundsInAmount.isDisplayed()) {
+        if (fundsInAmount.isDisplayed()==true) {
             fundsInAmount.clear();
             fundsInAmount.sendKeys("130");
             File screenshotFile4 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -155,7 +155,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         }
 
         WebElement createFundsIn = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[3]/div/button[2]"));
-        if (createFundsIn.isDisplayed()) {
+        if (createFundsIn.isDisplayed()==true) {
             createFundsIn.click();
             System.out.println("Se creó la transacción");
 
@@ -169,7 +169,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         FileUtils.copyFile(screenshotFile5, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInCashPagoExpress\\createTransaction.png"));
 
         WebElement goToTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/aside/div[4]/div/ul/div[5]/li/a/div/span"));
-        if (goToTransactions.isDisplayed()) {
+        if (goToTransactions.isDisplayed()==true) {
             goToTransactions.click();
             System.out.println("Ingresó a la opción Transactions");
 
@@ -179,7 +179,7 @@ public class FundsInCashPagoExpress extends BaseTest {
         }
 
         WebElement viewTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[1]/div/div/div[4]/button"));
-        if (viewTransactions.isDisplayed()) {
+        if (viewTransactions.isDisplayed()==true) {
             viewTransactions.click();
             File screenshotFile6 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             FileUtils.copyFile(screenshotFile6, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInCashPagoExpress\\viewTransactions.png"));

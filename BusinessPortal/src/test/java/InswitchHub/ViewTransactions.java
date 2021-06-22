@@ -19,7 +19,7 @@ public class ViewTransactions extends BaseTest {
 
 
         WebElement userName = driver.findElement(By.name("email"));
-        if (userName.isDisplayed()) {
+        if (userName.isDisplayed()==true) {
             userName.clear();
             userName.sendKeys("andres.abella");
         } else {
@@ -28,7 +28,7 @@ public class ViewTransactions extends BaseTest {
         }
 
         WebElement password = driver.findElement(By.name("password"));
-        if (password.isDisplayed()) {
+        if (password.isDisplayed()==true) {
             password.clear();
             password.sendKeys("inswitch");
             //Tomar Screenshot
@@ -40,7 +40,7 @@ public class ViewTransactions extends BaseTest {
         }
 
         WebElement signIn = driver.findElement(By.xpath("//button[contains(text(),'Login')]"));
-        if (signIn.isDisplayed()) {
+        if (signIn.isDisplayed()==true) {
             signIn.click();
         } else {
             System.out.println("No se pudo hacer Login correctamente");
@@ -52,7 +52,7 @@ public class ViewTransactions extends BaseTest {
         //Ambiente Producción
         //WebElement sandBoxEnvironment = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/ul/li[2]"));
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-        if (sandBoxEnvironment.isEnabled()) {
+        if (sandBoxEnvironment.isEnabled()==true) {
             //driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/ul")).click();
             sandBoxEnvironment.click();
             File screenshotFile0 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -64,7 +64,7 @@ public class ViewTransactions extends BaseTest {
         }
 
         WebElement transactionOptions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/aside/div[4]/div/ul/div[5]/li/a/div/span"));
-        if (transactionOptions.isDisplayed()) {
+        if (transactionOptions.isDisplayed()==true) {
             transactionOptions.click();
             System.out.println("Ingreso a la opción de Transacciones");
 
@@ -73,7 +73,7 @@ public class ViewTransactions extends BaseTest {
         }
 
         WebElement clearEntity = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[1]/div/div/div[1]/div/input"));
-        if (clearEntity.isDisplayed()) {
+        if (clearEntity.isDisplayed()==true) {
             clearEntity.clear();
             clearEntity.sendKeys("1");
             System.out.println("Se ingresa dato en el campo Entity ID correctamente");
@@ -83,7 +83,7 @@ public class ViewTransactions extends BaseTest {
         }
 
         WebElement viewTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[1]/div/div/div[4]/button"));
-        if (viewTransactions.isDisplayed()) {
+        if (viewTransactions.isDisplayed()==true) {
             viewTransactions.click();
 
         } else {
@@ -91,7 +91,7 @@ public class ViewTransactions extends BaseTest {
         }
 
         WebElement getTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[2]/div/div/div[2]/table/tbody/tr"));
-        if (getTransactions.isDisplayed()) {
+        if (getTransactions.isDisplayed()==true) {
             Thread.sleep(700);
             String listTransactions = getTransactions.getText();
             System.out.println("/-------------------------------------------------------/");
