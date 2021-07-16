@@ -72,39 +72,25 @@ public class ViewTransactions extends BaseTest {
             System.out.println("No se pudo acceder a la opción de Transacciones");
         }
 
-        WebElement clearEntity = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[1]/div/div/div[1]/div/input"));
-        if (clearEntity.isDisplayed()==true) {
-            clearEntity.clear();
-            clearEntity.sendKeys("1");
-            System.out.println("Se ingresa dato en el campo Entity ID correctamente");
-
-        } else {
-            System.out.println("No se logró consultar el campo Entity ID");
-        }
-
-        WebElement viewTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[1]/div/div/div[4]/button"));
+        WebElement viewTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[1]/div/div[2]/div[3]/button"));
         if (viewTransactions.isDisplayed()==true) {
             viewTransactions.click();
+            File screenshotFile7 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            FileUtils.copyFile(screenshotFile7, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInAsaas\\viewTransactions.png"));
+            System.out.println("Ingresó a la opción Transactions");
 
         } else {
-            System.out.println("No se pueden visualizar las transacciones");
+            System.out.println("No ingresó a la opción Transactions");
+
         }
 
-        WebElement getTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[2]/div/div/div[2]/table/tbody/tr"));
-        if (getTransactions.isDisplayed()==true) {
-            Thread.sleep(700);
-            String listTransactions = getTransactions.getText();
-            System.out.println("/-------------------------------------------------------/");
-            System.out.println("Los datos de la última transacción son: " + listTransactions);
-            System.out.println("/-------------------------------------------------------/");
-            File screenshotFile1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(screenshotFile1, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\Transactions\\getTransactions.png"));
+        String lastTransaction = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[2]/div/div/div[2]/table/tbody")).getText();
+        System.out.println("Confirmación datos últimas transacciones enviadas: " + lastTransaction );
+        File screenshotFile1 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        FileUtils.copyFile(screenshotFile1, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\Transactions\\getTransactions.png"));
 
 
 
-        } else {
-            System.out.println("No se pueden visualizar las transacciones");
-        }
 
 
 

@@ -1,12 +1,15 @@
 package InswitchHub;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.assertEquals;
 
 public class FundsInCashPuntoExpressEC extends BaseTest {
 
@@ -81,15 +84,20 @@ public class FundsInCashPuntoExpressEC extends BaseTest {
             System.out.println("No se muestra la opción de Balance");
         }
 
-        String puntoExpressAcountName = driver.findElement(By.xpath("//h5[contains(text(),'Account EC')]")).getText();
-        System.out.println("Nombre de la cuenta: " + puntoExpressAcountName );
-        String puntoExpressAcountSaldo = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[8]/div/div[1]/div/div/div[2]/h3")).getText();
+        String acountNameExpected = "Account EC";
+        String acountNamefound = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[8]/div/section[1]/div/div[1]")).getText();
+        System.out.println("Nombre de la cuenta: " + acountNamefound);
+        assertEquals(acountNameExpected,acountNamefound);
+        String puntoExpressAcountSaldo = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[8]/div/section[1]/div/div[2]/div[1]")).getText();
         System.out.println("Saldo de la cuenta: " + puntoExpressAcountSaldo );
-        String paymentMethodReference = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[8]/div/div[1]/div/div/div[4]/p[2]")).getText();
+        String paymentMethodReference = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[8]/div/section[3]/div[1]/div[2]/span[2]")).getText();
         System.out.println("El payment Method de la cuenta es: " + paymentMethodReference );
 
+
+
+
         Actions action0 = new Actions(driver);
-        WebElement fundsInButton = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[8]/div/div[1]/div/div/div[4]/div/div[1]/div/button/i"));
+        WebElement fundsInButton = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div/div[4]/div[8]/div/section[1]/div/div[2]/div[2]/span[1]"));
         action0.moveToElement(fundsInButton);
         if (fundsInButton.isDisplayed()==true) {
             fundsInButton.click();
@@ -102,7 +110,7 @@ public class FundsInCashPuntoExpressEC extends BaseTest {
 
         }
 
-        WebElement selectCashOption = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div[4]/button/span"));
+        WebElement selectCashOption = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div[4]/button"));
         if (selectCashOption.isDisplayed()==true) {
             selectCashOption.click();
             File screenshotFile4 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
@@ -113,6 +121,9 @@ public class FundsInCashPuntoExpressEC extends BaseTest {
             System.out.println("No se encontró el método de pago cash");
 
         }
+
+        String paymentMethodSelected = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[2]/div/table/tbody/tr/td[3]")).getText();
+        System.out.println("El método de pago seleccionado es: " + paymentMethodSelected );
 
         WebElement selectPaymentMethod = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[2]/div/table/tbody/tr/td[6]/button"));
         if (selectPaymentMethod.isDisplayed()==true) {
@@ -126,7 +137,7 @@ public class FundsInCashPuntoExpressEC extends BaseTest {
 
         }
 
-        WebElement enterDescription = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[1]/input"));
+        WebElement enterDescription = driver.findElement(By.name("description"));
         if (enterDescription.isDisplayed()==true) {
             enterDescription.clear();
             enterDescription.sendKeys("FundsIn Test Cash");
@@ -139,11 +150,13 @@ public class FundsInCashPuntoExpressEC extends BaseTest {
 
         }
 
-        WebElement enterAmount = driver.findElement(By.xpath("/html/body/div[3]/div/div/div[2]/div/div[1]/div/form/div[2]/input"));
+        String NumGenerator= RandomStringUtils.randomNumeric(2);
+
+        WebElement enterAmount = driver.findElement(By.name("amount"));
         if (enterAmount.isDisplayed()==true) {
             enterAmount.clear();
-            enterAmount.sendKeys("112");
-            System.out.println("Se ingreso la cantidad del pago");
+            enterAmount.sendKeys(NumGenerator);
+            System.out.println("Se ingreso la cantidad del pago: "+NumGenerator);
 
         } else {
             System.out.println("No se ingresó la cantidad");
@@ -173,11 +186,11 @@ public class FundsInCashPuntoExpressEC extends BaseTest {
 
         }
 
-        WebElement viewTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[1]/div/div/div[4]/button"));
+        WebElement viewTransactions = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[1]/div/div[2]/div[3]/button"));
         if (viewTransactions.isDisplayed()==true) {
             viewTransactions.click();
             File screenshotFile8 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-            FileUtils.copyFile(screenshotFile8, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInCashPuntoExpressEC\\viewTransactions.png"));
+            FileUtils.copyFile(screenshotFile8, new File("C:\\Users\\Andres Abella Mora\\Pictures\\InsiwtchHub\\FundsInAsaas\\viewTransactions.png"));
             System.out.println("Ingresó a la opción Transactions");
 
         } else {
@@ -185,8 +198,8 @@ public class FundsInCashPuntoExpressEC extends BaseTest {
 
         }
 
-        String lastTransaction = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[2]/div/div/div[2]/table/tbody/tr[1]")).getText();
-        System.out.println("Confirmación datos última transacción enviada: " + lastTransaction );
+        String lastTransaction = driver.findElement(By.xpath("//*[@id=\"root\"]/div[2]/div/div/main/div[2]/div[3]/div[2]/div/div/div[2]/table/tbody")).getText();
+        System.out.println("Confirmación datos últimas transacciones enviadas: " + lastTransaction );
 
 
     }
